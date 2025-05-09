@@ -81,8 +81,11 @@ export default function Page() {
       } else {
         throw new Error("Unexpected response status: " + response.status);
       }
-      router.push("/submission");
+      setTimeout(() => {
+        router.push("/submission");
+      }, 1000);
     } catch (error: any) {
+      console.error("🚀 ~ onSubmit ~ error:", error);
       toast.error(error.message);
     } finally {
       setIsSubmitting(false);

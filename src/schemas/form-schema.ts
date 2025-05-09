@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const MAX_SIZE = 150 * 1024 * 1024;
+const MAX_SIZE = 4.5 * 1024 * 1024;
 
 export const formSchema = z.object({
   // Tab 1 - Lead Types
