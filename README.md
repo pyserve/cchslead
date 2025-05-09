@@ -2,34 +2,32 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ![image](https://github.com/user-attachments/assets/0adc8d84-34de-4aa7-9d18-3dd0d7cf9bdb)
 
-## Getting Started
+# Project Name
+CCHS Lead Generation Landing Page
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **React + Next.js**: For building the web application and managing routing with server-side rendering.
+- **React-Hooks-Form (Multipage Setup)**: For handling form submissions and managing form state across multiple pages.
+- **Zustand**: A state management library to manage application state in a simple and scalable way.
+- **Google Drive API**: Used to upload user files directly to the Google Drive cloud, making it easier to store and share documents.
+- **Tailwind CSS & Shadcn**: Tailwind CSS provides utility-first CSS classes for quick styling, while Shadcn offers a component library for building clean and modern UI elements.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **File Upload**: Allows users to upload files directly to their Google Drive.
+- **Multipage Form Handling**: With the help of `react-hook-form`, users can navigate through multiple form pages without losing their data.
+- **State Management**: Uses `zustand` for managing application-level state, ensuring that the app remains efficient and scalable.
+- **Responsive Design**: The app is fully responsive, making it usable across desktops, tablets, and mobile devices.
+- **Beautiful UI**: Tailwind CSS and Shadcn create an aesthetically pleasing and easy-to-use interface.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup and Installation
 
-## Learn More
+To get started with the project locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/project-name.git
 
 ## Deploy on Vercel
 
