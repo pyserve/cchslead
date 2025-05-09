@@ -89,7 +89,6 @@ export default function Page() {
       toast.error(error.message);
     } finally {
       setIsSubmitting(false);
-      // setFormSubmitted(true);
     }
   };
 

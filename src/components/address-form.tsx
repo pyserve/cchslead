@@ -1,6 +1,5 @@
 "use client";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   FormControl,
   FormField,
@@ -9,7 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { interestOptions, leadTypes } from "@/lib/data";
+import { leadTypes } from "@/lib/data";
 import { useFormContext } from "react-hook-form";
 import { FileUploadField } from "./file-upload-field";
 import { GoogleAddressInput } from "./google-address-input";
@@ -166,7 +165,7 @@ export default function AddressForm() {
         </div>
       </div>
 
-      <FormField
+      {/* <FormField
         control={form.control}
         name="interestedIn"
         render={() => (
@@ -217,7 +216,7 @@ export default function AddressForm() {
             <FormMessage />
           </FormItem>
         )}
-      />
+      /> */}
       <FormField
         control={form.control}
         name="file"

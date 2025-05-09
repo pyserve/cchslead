@@ -52,9 +52,10 @@ export const formSchema = z.object({
   }),
   meetingTime: z.string().min(1, "Please select a meeting time."),
   leadType: z.string().min(1, "Please select a lead type."),
-  interestedIn: z.array(z.string()).min(1, {
-    message: "Please select at least one interest.",
-  }),
+  interestedIn: z
+    .array(z.string())
+    .optional()
+    .transform((val) => val ?? ""),
   file: z
     .union([
       z.instanceof(File),
