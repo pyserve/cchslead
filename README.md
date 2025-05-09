@@ -7,7 +7,7 @@
 - **React + Next.js**: For building the web application and managing routing.
 - **React-Hooks-Form (Multipage Setup)**: For handling form submissions and managing form state across multiple pages.
 - **Zustand**: A state management library to manage application state in a simple and scalable way.
-- **Google Drive API**: Used to upload user files directly to the Google Drive cloud, making it easier to store and share files.
+- **Google Drive API**: Upload user files directly to the Google Drive cloud without OAuth2 requirement, making it easier to store and share files.
 - **Tailwind CSS & Shadcn**: Tailwind CSS provides utility-first CSS classes for quick styling, while Shadcn offers a component library for building clean and modern UI elements.
 
 ## Setup and Installation
