@@ -51,21 +51,22 @@ export default function Page() {
     console.log("🚀 ~ onSubmit ~ data:", data);
     setIsSubmitting(true);
     try {
-      const fileFormData = new FormData();
-      fileFormData.append("file", data.file);
-      const res = await axios.post("/api/upload", fileFormData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("🚀 ~ onSubmit ~ res:", res);
-      let fileURL = null;
-      if (res.data) {
-        fileURL = res.data?.webViewLink;
-        toast.success(res.data?.message || "File uploaded successfully!");
-      }
       const formData = await prepareFormData(data);
-      formData.append("fileURL", fileURL);
+      if (data.file) {
+        const fileFormData = new FormData();
+        fileFormData.append("file", data.file);
+        const res = await axios.post("/api/upload", fileFormData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log("🚀 ~ onSubmit ~ res:", res);
+
+        if (res.data) {
+          formData.append("fileURL", res.data?.webViewLink);
+          toast.success(res.data?.message || "File uploaded successfully!");
+        }
+      }
       const response = await axios.post(
         "https://hooks.zapier.com/hooks/catch/7641205/2nk8wov/",
         formData,
@@ -134,7 +135,7 @@ export default function Page() {
         <CardContent className="">
           <div className="mb-8 ">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="">
-              <TabsList className="grid grid-cols-3 mb-8 w-full h-15">
+              <TabsList className="grid grid-cols-3 gap-4 mb-8 w-full h-15">
                 <TabsTrigger
                   value="lead-source"
                   className="flex items-center gap-2"
@@ -142,13 +143,14 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     1
                   </div>
-                  <div className="flex flex-col items-start">
+                  <div className="hidden sm:flex flex-col items-start">
                     <span className="font-medium">First</span>
                     <span className="text-sm text-muted-foreground">
                       Lead Source
                     </span>
                   </div>
                 </TabsTrigger>
+
                 <TabsTrigger
                   value="contact-info"
                   className="flex items-center gap-2"
@@ -156,13 +158,14 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     2
                   </div>
-                  <div className="flex flex-col items-start">
+                  <div className="hidden sm:flex flex-col items-start">
                     <span className="font-medium">Second</span>
                     <span className="text-sm text-muted-foreground">
                       Customer Information
                     </span>
                   </div>
                 </TabsTrigger>
+
                 <TabsTrigger
                   value="address-info"
                   className="flex items-center gap-2"
@@ -170,7 +173,7 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     3
                   </div>
-                  <div className="flex flex-col items-start">
+                  <div className="hidden sm:flex flex-col items-start">
                     <span className="font-medium">Third</span>
                     <span className="text-sm text-muted-foreground">
                       Address & Meeting
