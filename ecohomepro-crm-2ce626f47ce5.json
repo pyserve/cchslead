@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ecohomepro-crm",
+  "private_key_id": "2ce626f47ce56efcf7537b5540ef26f4fbffd455",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCXtBXn5urb5iZY\n5BL+vLDKBbFSq0x/TXoKgLLimiWp917QSsdgJt0cqqF/6DD6pNNxrqTsLQvsy55S\npHfLgrvBJPQSUhdcvlHND0gxF5fqgobYSAsI2i/UK66VslfHj38/mEC1iPI9qkeW\nWDOm1X4m2LmSm3ZufXuyyCSQxpGTpRAERpJx2ev1Xsq1Rzxu79IiEPouVe5r+9Qm\nvpYSxV7qmR+YX/eOZQCfugrL/r72YANVAyhAOKA4x2o7gG7tGIye39hr08KBm1vj\nvp8gAkovM0hI1xUIxM4JHCYCbr7BJlG5luqZ4gc4AjmQvSoDEpAw/Bx18O+1CNv2\n7bbZXClrAgMBAAECggEAL2oqZJpwcn17I9JZO4Q3T1U7KIcAuFM7Xzf9cUTTm82E\ntV6B9UQAXPrZ0lP8pwJIUiJPSsADl6XGnLbp+FIqo8IMhQNiaOrVP13U5v8kTLgy\nNDxEMqabR1nFzeT5eZaYo4RPSU39xJdJm6yCrFTTAoo/ahqsB/mxZV4Xy6Y8juQP\nome/1pmHoFUOKC55xSlGkiGilXCCGmwhg7trt0qziPn7vkr3NmAKEpmTIsQ7pN7i\nSMwU6zqxfj0/YM6O9WNVnptVLH1GWseQfpaht/yJMRR4wYOtJTvjNNIpbHL2PqxQ\nLyzatcNjl4/VnDVgGh6wVWfY0AVKLUFlK/sPIVo43QKBgQDKoLTKKbwJxbvf1sah\nu3D6OOiduWLhWi0GXAbqMqUIseHW/SB3NqbUL6eCVNPcdTgpx9+UdAkPSUCH5Br+\nqDmgcAUpuASh/mqBM4F0iT1yrdYGCZ6CEVz16m4NCe4BUmyg1d3p+Kl8pfzzmmh9\nG4iBKxr6FwdbbWJbxx1WQIu7lwKBgQC/qYcX+FAydipzX8W5boNQkpN9e0QUloA/\n1JEMIaKJFFJqt0WbQkZOpiFL3YbTkXo/DOs3LAsDbFV0INgHNNavuBZuY/37wwZS\nEobcyDHdXYmA1iCWtFRF95ttzgldPBoeuid/XOZp05w9NPn7FCJgggMgL26HbnfF\nqfixrYzLTQKBgG4Vc0Ml+1+/ynsof0+cuxtmUZJnBn5x9GYxFxyjmR+pLI4VhU7f\nJTHAFhxro5JxKKsiSKiphcaFQIbTeYsCsBQm59crf3DW/NvmtJ0wdm7YXJ95GGGH\nt15vF40D6QdU1Wln56FWlBYBQ/TA3aWikL3EQmq+miOkwLwl6B1VAdVPAoGBAKZW\nDZ167rbsoKjirGnjBGnv27riONKZTxKWe4+IvVO0ZFajWfCF0xi8y1bZGgMRVYPU\nxWpred9trLgNLQ8MB2oXHLiPZUSTHDAsTgjcYZJZdFVxAHVqaV0TqDvivXPCDnUu\nX8sEKCAd+5GPIYiLD86r5uSO5aD5+U591gz1rqRdAoGACFSZje/BLAKYkx/LbgQ1\nzJSuTTNRQ1iFAAtTzk4BYEgCtAtf20ELiP/gw+i691+xpSKBfvyWEaanXDrz8V/W\nXtfTOzUYRtlP0Dcevy3FPMjZwouU5dlC7H/m5CecJto6y9kWSfYx7lzeuvArURSY\n4RrPqhwnHNxW8EtPik+LiLY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-drive@ecohomepro-crm.iam.gserviceaccount.com",
+  "client_id": "114773658360978760406",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-drive%40ecohomepro-crm.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
