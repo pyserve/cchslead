@@ -61,7 +61,6 @@ export default function Page() {
           },
         });
         console.log("🚀 ~ onSubmit ~ res:", res);
-
         if (res.data) {
           formData.append("fileURL", res.data?.webViewLink);
           toast.success(res.data?.message || "File uploaded successfully!");
@@ -118,7 +117,7 @@ export default function Page() {
   console.log(form.formState.errors);
 
   return (
-    <div className="container mx-auto py-10 max-w-4xl">
+    <div className="mx-auto py-10 px-2 max-w-4xl ">
       <AlertDialog
         title="Form Submitted"
         description="Your form has been successfully submitted."
@@ -143,7 +142,7 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     1
                   </div>
-                  <div className="hidden sm:flex flex-col items-start">
+                  <div className="hidden md:flex flex-col items-start">
                     <span className="font-medium">First</span>
                     <span className="text-sm text-muted-foreground">
                       Lead Source
@@ -158,10 +157,10 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     2
                   </div>
-                  <div className="hidden sm:flex flex-col items-start">
+                  <div className="hidden md:flex flex-col items-start">
                     <span className="font-medium">Second</span>
                     <span className="text-sm text-muted-foreground">
-                      Customer Information
+                      Customer Info
                     </span>
                   </div>
                 </TabsTrigger>
@@ -173,7 +172,7 @@ export default function Page() {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-600 text-white">
                     3
                   </div>
-                  <div className="hidden sm:flex flex-col items-start">
+                  <div className="hidden md:flex flex-col items-start">
                     <span className="font-medium">Third</span>
                     <span className="text-sm text-muted-foreground">
                       Address & Meeting

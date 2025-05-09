@@ -44,7 +44,7 @@ export default function AddressForm() {
         )}
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="streetAddress"
@@ -73,7 +73,7 @@ export default function AddressForm() {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <FormField
           control={form.control}
           name="state"
@@ -174,7 +174,7 @@ export default function AddressForm() {
             <div className="mb-4">
               <FormLabel>Interested In</FormLabel>
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
               {interestOptions.map((option) => (
                 <FormField
                   key={option.value}

@@ -17,7 +17,7 @@ export default function ContactInfoForm() {
     <div className="space-y-6">
       <h2 className="text-xl font-semibold">Customer Information</h2>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="firstName"
@@ -61,7 +61,7 @@ export default function ContactInfoForm() {
         )}
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="mobileNumber"
