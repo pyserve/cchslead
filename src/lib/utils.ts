@@ -37,6 +37,7 @@ export const prepareFormData = async (data: any) => {
   formData.append("country", data.country);
   formData.append("meetingTime", data.meetingTime);
   formData.append("leadType", data.leadType);
+  formData.append("notes", data.notes);
 
   // data.interestedIn.forEach((item: string) => {
   //   formData.append("interestedIn[]", item);

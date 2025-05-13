@@ -30,6 +30,10 @@ export const formSchema = z.object({
     .string()
     .optional()
     .transform((val) => val ?? ""),
+  notes: z
+    .string()
+    .optional()
+    .transform((val) => val ?? ""),
 
   // Tab 3 - Address and Additional Info
   fullAddress: z.string().min(1, {
@@ -83,7 +87,6 @@ export const formSchema = z.object({
         }
 
         if (typeof val === "string") {
-          // Estimate base64 size
           const base64Length = val.length - (val.indexOf(",") + 1);
           const sizeInBytes = Math.ceil((base64Length * 3) / 4);
           return sizeInBytes <= MAX_SIZE;

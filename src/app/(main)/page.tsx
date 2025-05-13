@@ -83,7 +83,8 @@ export default function Page() {
       }
       setTimeout(() => {
         router.push("/submission");
-      }, 1000);
+      }, 500);
+      form.reset();
     } catch (error: any) {
       console.error("🚀 ~ onSubmit ~ error:", error);
       toast.error(error.message);

@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Textarea } from "./ui/textarea";
 
 export default function AddressForm() {
   const form = useFormContext();
@@ -222,6 +223,19 @@ export default function AddressForm() {
         name="file"
         render={({ field }) => (
           <FileUploadField onChange={field.onChange} value={field.value} />
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="notes"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Notes</FormLabel>
+            <FormControl>
+              <Textarea {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
         )}
       />
     </div>
