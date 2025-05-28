@@ -71,7 +71,7 @@ export default function AddressForm() {
       setTimeOptions((prevOptions) =>
         prevOptions.map((slot) => ({
           ...slot,
-          disabled: (bookingCount[slot.value] || 0) >= 2,
+          disabled: (bookingCount[slot.value] || 0) >= 4,
         }))
       );
     };
