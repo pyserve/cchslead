@@ -67,7 +67,7 @@ export default function Page() {
         }
       }
       const response = await axios.post(
-        "https://hooks.zapier.com/hooks/catch/7641205/2nk8wov/",
+        "https://hooks.zapier.com/hooks/catch/7641205/2jgfs36/",
         formData,
         {
           headers: {

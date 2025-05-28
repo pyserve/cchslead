@@ -9,6 +9,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { leadTypes } from "@/lib/data";
+import axios from "axios";
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { FileUploadField } from "./file-upload-field";
 import { GoogleAddressInput } from "./google-address-input";
@@ -23,6 +26,60 @@ import { Textarea } from "./ui/textarea";
 
 export default function AddressForm() {
   const form = useFormContext();
+  const values = form.watch();
+  const [timeOptions, setTimeOptions] = useState(
+    Array.from({ length: 6 }, (_, i) => {
+      const startHour = 9 + i * 2;
+      const endHour = startHour + 2;
+
+      const formatHour = (hour: number) =>
+        hour.toString().padStart(2, "0") + ":00";
+
+      return {
+        value: formatHour(startHour),
+        label: `${formatHour(startHour)} - ${formatHour(endHour)}`,
+        disabled: false,
+        startHour,
+        endHour,
+      };
+    })
+  );
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const response = await axios.post("/api/leads/", {
+        date: values.meetingDate,
+        source: values.leadSource,
+      });
+      const serverTimes =
+        response.data?.data?.map(
+          (d: any) => dayjs(d.Meeting_Time).format("HH") + ":00"
+        ) || [];
+
+      const bookingCount: Record<string, number> = {};
+
+      timeOptions.forEach(({ value, startHour, endHour }) => {
+        bookingCount[value] = 0;
+        serverTimes.forEach((time: any) => {
+          const [hourStr] = time.split(":");
+          const hour = parseInt(hourStr, 10);
+          if (hour >= startHour && hour < endHour) bookingCount[value]++;
+        });
+      });
+      console.log("🚀 ~ timeOptions.forEach ~ bookingCount:", bookingCount);
+
+      setTimeOptions((prevOptions) =>
+        prevOptions.map((slot) => ({
+          ...slot,
+          disabled: (bookingCount[slot.value] || 0) >= 2,
+        }))
+      );
+    };
+    if (values.leadSource && values.meetingDate) {
+      fetchAPI();
+      form.setValue("meetingTime", "");
+    }
+  }, [values.leadSource, values.meetingDate]);
 
   return (
     <div className="space-y-6">
@@ -116,20 +173,49 @@ export default function AddressForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="col-span-1 sm:col-span-2">
+          <FormField
+            control={form.control}
+            name="meetingDate"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Meeting Date</FormLabel>
+
+                <input
+                  {...field}
+                  type="date"
+                  className="border p-2 py-1.5 rounded-md shadow-sm text-gray-700 text-sm"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="col-span-1 sm:col-span-2">
           <FormField
             control={form.control}
             name="meetingTime"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Preferred Meeting Time</FormLabel>
+                <FormLabel>Preferred Time</FormLabel>
 
-                <input
-                  {...field}
-                  type="datetime-local"
-                  className="border p-2 py-1.5 rounded-md shadow-sm text-gray-700 text-sm"
-                />
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Time" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {timeOptions.map((option) => (
+                      <SelectItem
+                        disabled={option.disabled}
+                        key={option.value}
+                        value={option.value}
+                      >
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
@@ -144,7 +230,7 @@ export default function AddressForm() {
                 <FormLabel>Lead Type</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  defaultValue={field.value ?? ""}
                 >
                   <FormControl className="w-full">
                     <SelectTrigger>
@@ -165,59 +251,6 @@ export default function AddressForm() {
           />
         </div>
       </div>
-
-      {/* <FormField
-        control={form.control}
-        name="interestedIn"
-        render={() => (
-          <FormItem>
-            <div className="mb-4">
-              <FormLabel>Interested In</FormLabel>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-              {interestOptions.map((option) => (
-                <FormField
-                  key={option.value}
-                  control={form.control}
-                  name="interestedIn"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        key={option.value}
-                        className="flex flex-row items-start space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(option.value)}
-                            onCheckedChange={(checked) => {
-                              const currentValue = field.value || [];
-
-                              return checked
-                                ? field.onChange([
-                                    ...currentValue,
-                                    option.value,
-                                  ])
-                                : field.onChange(
-                                    currentValue.filter(
-                                      (value: string) => value !== option.value
-                                    )
-                                  );
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          {option.label}
-                        </FormLabel>
-                      </FormItem>
-                    );
-                  }}
-                />
-              ))}
-            </div>
-            <FormMessage />
-          </FormItem>
-        )}
-      /> */}
       <FormField
         control={form.control}
         name="file"

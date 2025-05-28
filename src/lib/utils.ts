@@ -35,6 +35,7 @@ export const prepareFormData = async (data: any) => {
   formData.append("state", data.state);
   formData.append("zipCode", data.zipCode);
   formData.append("country", data.country);
+  formData.append("meetingDate", data.meetingDate);
   formData.append("meetingTime", data.meetingTime);
   formData.append("leadType", data.leadType);
   formData.append("notes", data.notes);

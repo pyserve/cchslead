@@ -54,6 +54,7 @@ export const formSchema = z.object({
   country: z.string().min(1, {
     message: "Country is required.",
   }),
+  meetingDate: z.string().min(1, "Meeting date is required."),
   meetingTime: z.string().min(1, "Please select a meeting time."),
   leadType: z.string().min(1, "Please select a lead type."),
   interestedIn: z
