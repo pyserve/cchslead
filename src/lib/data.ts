@@ -3,6 +3,10 @@ export const leadSources = [
   { value: "Net Zero Lead", label: "Net Zero Lead" },
   { value: "Bought Lead", label: "Bought Lead" },
   { value: "Action Lead", label: "Action Lead" },
+  {
+    value: "Prime Lead",
+    label: "Prime Lead",
+  },
 ];
 
 export const leadTypes = [
@@ -10,6 +14,12 @@ export const leadTypes = [
     label: "New Rebates",
     value: "New Rebates",
   },
+  { label: "HVAC Check Up", value: "HVAC Check Up" },
+  { label: "Rebate", value: "Rebate" },
+  { label: "0% Loan", value: "0% Loan" },
+  { label: "Radon", value: "Radon" },
+  { label: 'Electricity "ULO"', value: 'Electricity "ULO"' },
+  { label: "Water Heater", value: "Water Heater" },
 ];
 
 export const interestOptions = [
