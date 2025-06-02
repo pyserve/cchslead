@@ -59,7 +59,7 @@ export const GoogleAddressInput = ({ field }: any) => {
           setValue("country", country);
         });
       }
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(debounce.current);
   }, [field, setValue]);
 
