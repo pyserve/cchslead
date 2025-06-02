@@ -14,7 +14,7 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { FileUploadField } from "./file-upload-field";
-import { GoogleAddressInput } from "./google-address-input";
+import { AddressAutoComplete } from "./google-address-inputv2";
 import {
   Select,
   SelectContent,
@@ -94,7 +94,17 @@ export default function AddressForm() {
           <FormItem>
             <FormLabel>Full Address</FormLabel>
             <FormControl>
-              <GoogleAddressInput field={field} />
+              <AddressAutoComplete
+                value={field.value}
+                onAddressSelected={(value) => {
+                  form.setValue(field?.name, value.fullAddress);
+                  form.setValue("streetAddress", value.street);
+                  form.setValue("city", value.city);
+                  form.setValue("state", value.state);
+                  form.setValue("zipCode", value.postalCode);
+                  form.setValue("country", value.country);
+                }}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>

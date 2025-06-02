@@ -1,6 +1,6 @@
+import Providers from "@/components/providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,16 +27,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" type="image/svg+xml" href="/logo.png" />
-
-        <Script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOEbzx7xbi72TM_g8gRfIxovJGf0-4m-0&libraries=places"
-          strategy="afterInteractive"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
