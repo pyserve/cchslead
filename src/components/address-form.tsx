@@ -96,6 +96,7 @@ export default function AddressForm() {
             <FormControl>
               <AddressAutoComplete
                 value={field.value}
+                displayName={field.value}
                 onAddressSelected={(value) => {
                   form.setValue(field?.name, value.fullAddress);
                   form.setValue("streetAddress", value.street);

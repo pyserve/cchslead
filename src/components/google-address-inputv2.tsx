@@ -60,6 +60,12 @@ export const AddressAutoComplete = ({
   >(displayName);
 
   useEffect(() => {
+    if (displayName) {
+      setDebouncedInputValue(displayName);
+    }
+  }, [displayName]);
+
+  useEffect(() => {
     const updateQuery = debounce(
       () => setInputValue(debouncedInputValue),
       1000

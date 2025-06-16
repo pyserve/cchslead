@@ -15,7 +15,7 @@ import ProgressBar from "@/components/progress-bar";
 import { useAppStore } from "@/hooks/store";
 import { getRequiredFields, prepareFormData } from "@/lib/utils";
 import type { Values } from "@/schemas";
-import { formSchema } from "@/schemas/form-schema";
+import { FormSchema, formSchema } from "@/schemas/form-schema";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -47,14 +47,34 @@ export default function Page() {
     setProgress(percentage);
   }, [filledFields, totalFields]);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FormSchema) => {
     console.log("🚀 ~ onSubmit ~ data:", data);
     setIsSubmitting(true);
+
     try {
+      const res = await axios.post("/api/leads/entry", {
+        address: data.fullAddress,
+        phone: data.mobileNumber.replace(/[^\d]/g, ""),
+        email: data.email,
+        date: data.meetingDate,
+      });
+
+      const statuses = res.data?.data?.map((d: any) => d.Lead_Status);
+      const hasInvalidStatus = statuses?.some((status: string) =>
+        ["Not Interested", "Invalid"].includes(status)
+      );
+      if (hasInvalidStatus) {
+        toast.error(
+          "This lead appears to be a duplicate. It was already booked within the past week."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
       const formData = await prepareFormData(data);
       if (data.file) {
         const fileFormData = new FormData();
-        fileFormData.append("file", data.file);
+        fileFormData.append("file", data?.file ?? "");
         const res = await axios.post("/api/upload", fileFormData, {
           headers: {
             "Content-Type": "multipart/form-data",
