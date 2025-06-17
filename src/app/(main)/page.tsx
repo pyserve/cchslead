@@ -52,24 +52,24 @@ export default function Page() {
     setIsSubmitting(true);
 
     try {
-      // const res = await axios.post("/api/leads/entry", {
-      //   address: data.fullAddress,
-      //   phone: data.mobileNumber.replace(/[^\d]/g, ""),
-      //   email: data.email,
-      //   date: data.meetingDate,
-      // });
+      const res = await axios.post("/api/leads/entry", {
+        address: data.fullAddress,
+        phone: data.mobileNumber.replace(/[^\d]/g, ""),
+        email: data.email,
+        date: data.meetingDate,
+      });
 
-      // const statuses = res.data?.data?.map((d: any) => d.Lead_Status);
-      // const hasInvalidStatus = statuses?.some((status: string) =>
-      //   ["Not Interested", "Invalid"].includes(status)
-      // );
-      // if (hasInvalidStatus) {
-      //   toast.error(
-      //     "This lead appears to be a duplicate. It was already booked within the past week."
-      //   );
-      //   setIsSubmitting(false);
-      //   return;
-      // }
+      const statuses = res.data?.data?.map((d: any) => d.Lead_Status);
+      const hasInvalidStatus = statuses?.some((status: string) =>
+        ["Not Interested", "Invalid"].includes(status)
+      );
+      if (hasInvalidStatus) {
+        toast.error(
+          "This lead appears to be a duplicate. It was already booked within the past week."
+        );
+        setIsSubmitting(false);
+        return;
+      }
 
       const formData = await prepareFormData(data);
       if (data.file) {
