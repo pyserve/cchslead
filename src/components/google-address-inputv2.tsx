@@ -169,6 +169,9 @@ export const AddressAutoComplete = ({
           postalCode = component.longText;
           break;
         case "locality":
+        case "postal_town":
+        case "sublocality":
+        case "administrative_area_level_2":
           city = component.longText;
           break;
         case "administrative_area_level_1":
